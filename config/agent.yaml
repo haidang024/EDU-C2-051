@@ -1,0 +1,26 @@
+# AgentRegistry manifest for EDU-C2-051. Registry keys must remain at root.
+id: "EDU-C2-051"
+name: "Teacher Professional Development Evidence Agent"
+namespace: "agent1000"
+version: "1.0.1"
+enabled: true
+category: "Cat 2"
+generation_mode: "llm"
+industry: "EDU"
+
+# Compatibility metadata; Graph directly inherits AgentBaseGraph.
+base_type: "AgentBaseGraph"
+class: "src.graph.graph.Graph"
+
+required_trust_level: "VERIFIED_EXTERNAL"
+
+# Connector and Azure OpenAI credentials are invocation-scoped requirements.
+requires:
+  secrets:
+    - "LMS_API_KEY"
+    - "HR_API_KEY"
+    - "DOC_STORE_API_KEY"
+    - "AZURE_OPENAI_API_KEY"
+    - "AZURE_OPENAI_ENDPOINT"
+    - "AZURE_OPENAI_DEPLOYMENT"
+  extras: ["openai"]

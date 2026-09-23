@@ -1,0 +1,30 @@
+# Runtime configuration for EDU-C2-051.
+# Static identity and compile-time requirements live in config/agent.yaml.
+
+max_retry: 3
+timeout_s: 60
+max_cohort_size: 50
+
+# The provisional STG adapter uses synthetic connector responses. Production
+# deployments override this to false and provision all required connector keys.
+stg_mock_mode: false
+
+memory_enabled: true
+hitl:
+  enabled: true
+  max_hitl: 5
+  default_tool_policy: "allow"
+
+# Optional provider configuration is threaded through the Cat-2 wrapper for
+# scaffold compatibility; no current domain node calls the LLM.
+llm_provider: "azure_openai"
+llm_model: "azure-openai-deployment"
+
+connectors:
+  lms: "lms_connector"
+  hr: "hr_connector"
+  doc_store: "doc_store_connector"
+
+reporting:
+  period_field: "reporting_period"
+  roll_up_enabled: true
